@@ -2,7 +2,7 @@ import { INIT_DATA, LOAD_DATA, FAIL_DATA, BaseDataActionTypes } from "./baseData
 import { BaseDataState } from "./baseDataTypes";
 
 const initialState = {
-    data: {},
+    data: null,
     isLoading: false,
     errorMessage: "",
 };

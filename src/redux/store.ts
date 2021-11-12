@@ -16,7 +16,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 
 const storeInitialState: Store = {
     dataReducer: {
-        data: {},
+        data: null,
         isLoading: false,
         errorMessage: "",
     },

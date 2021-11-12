@@ -3,18 +3,27 @@ import './App.css';
 
 import useBaseData from './custom-hooks/useBaseData';
 import Navbar from './components/Navbar';
+import { SRC_URL } from "./shared/baseUrl";
 
 function App() {
   const [data, isLoading, errorMessage] = useBaseData();
   console.log("data in app", data);
 
-  return (
-    <div className="App">
-      <Navbar logo={data["hdr-image"]} />
-      <div>Hi there!</div>
-      <div>{data["copy-text"]}</div>
-    </div>
-  );
+  if (data !== null) {
+    const bgImage = data["bg-image"]
+    const randomBackground = bgImage[Math.floor(Math.random() * bgImage.length)];
+    console.log("randomBg", randomBackground);
+    return (
+      <div className="App" style={{ backgroundImage: `url(${SRC_URL}${randomBackground})` }}>
+        <Navbar logo={data["hdr-image"]} />
+        <div>Hi there!</div>
+        <div>{data["copy-text"]}</div>
+      </div>
+    );
+  } else {
+    return <div></div>
+  }
+
 }
 
 export default App;

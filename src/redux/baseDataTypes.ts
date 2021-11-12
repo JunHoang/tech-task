@@ -3,7 +3,7 @@ export type Data = {
 }
 
 export type BaseDataState = {
-    data: Data,
+    data: Data | null,
     isLoading: boolean,
     errorMessage: string
 }
