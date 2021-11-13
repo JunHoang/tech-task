@@ -4,6 +4,7 @@ import './App.css';
 import useBaseData from './custom-hooks/useBaseData';
 import Navbar from './components/Navbar';
 import { SRC_URL } from "./shared/baseUrl";
+import LoginCard from './components/LoginCard';
 
 function App() {
   const [data, isLoading, errorMessage] = useBaseData();
@@ -19,8 +20,7 @@ function App() {
       <div className="App" style={{ backgroundImage: `url(${SRC_URL}${randomBackground})` }}>
         <div className="card-overlay">
           <Navbar logo={data["hdr-image"]} />
-          <div>Hi there!</div>
-          <div>{data["copy-text"]}</div>
+          <LoginCard title={data["login-form-text"]} />
         </div>
       </div>
     );
