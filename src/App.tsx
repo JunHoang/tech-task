@@ -10,14 +10,18 @@ function App() {
   console.log("data in app", data);
 
   if (data !== null) {
+
     const bgImage = data["bg-image"]
     const randomBackground = bgImage[Math.floor(Math.random() * bgImage.length)];
     console.log("randomBg", randomBackground);
+
     return (
       <div className="App" style={{ backgroundImage: `url(${SRC_URL}${randomBackground})` }}>
-        <Navbar logo={data["hdr-image"]} />
-        <div>Hi there!</div>
-        <div>{data["copy-text"]}</div>
+        <div className="card-overlay">
+          <Navbar logo={data["hdr-image"]} />
+          <div>Hi there!</div>
+          <div>{data["copy-text"]}</div>
+        </div>
       </div>
     );
   } else {

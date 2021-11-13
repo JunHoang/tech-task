@@ -1,5 +1,14 @@
 .App {
   text-align: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-overlay {
+  background: rgba(0, 0, 0, 0.25);
+  height: 100vh;
 }
 
 .App-logo {
