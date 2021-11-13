@@ -1,9 +1,10 @@
 import React from 'react';
-import { Grid, TextField, Button } from '@mui/material';
+import { Grid, TextField, Button, InputAdornment } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from './Input';
 
 const schema = yup.object().shape({
     Email: yup.string().required('Email is required!').email('Email is unvalid!'),
@@ -22,8 +23,8 @@ function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmitHandler)}>
-            <Grid container spacing={0} direction="column" >
-                <Grid item >
+            <Grid container spacing={0} direction="column" sx={{ mt: 8 }} >
+                <Grid item sx={{ m: 1 }}>
                     {(errors.Email) ?
                         <TextField
                             {...register("Email")}
@@ -33,6 +34,13 @@ function LoginForm() {
                             sx={{ width: '50ch' }}
                             error
                             helperText={errors.Email.message}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position='end'>
+                                        <EmailIcon />
+                                    </InputAdornment>
+                                )
+                            }}
                         />
                         :
                         <TextField
@@ -41,9 +49,16 @@ function LoginForm() {
                             label="Email"
                             name="Email"
                             sx={{ width: '50ch' }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position='end'>
+                                        <EmailIcon />
+                                    </InputAdornment>
+                                )
+                            }}
                         />}
                 </Grid>
-                <Grid item>
+                <Grid item sx={{ m: 1 }}>
                     {(errors.Password) ?
                         <TextField
                             {...register("Password")}
@@ -53,6 +68,13 @@ function LoginForm() {
                             sx={{ width: '50ch' }}
                             error
                             helperText={errors.Password.message}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position='end'>
+                                        <LockIcon />
+                                    </InputAdornment>
+                                )
+                            }}
                         />
                         :
                         <TextField
@@ -61,13 +83,20 @@ function LoginForm() {
                             label="Password"
                             name="Password"
                             sx={{ width: '50ch' }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position='end'>
+                                        <LockIcon />
+                                    </InputAdornment>
+                                )
+                            }}
                         />}
-                    <Grid item>
-                        <Button type="submit">Submit</Button>
+                    <Grid item sx={{ mt: 5 }}>
+                        <Button type="submit" variant="contained">Submit</Button>
                     </Grid>
                 </Grid>
             </Grid>
-        </form>
+        </form >
     )
 }
 
