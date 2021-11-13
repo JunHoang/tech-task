@@ -28,6 +28,25 @@ function LoginCard({ title }: Props) {
                         </Typography>
                         {/* <Button> Log in</Button> */}
                         <LoginForm />
+                        <Grid
+                            container
+                            direction="row"
+                            spacing={2}
+                            alignItems="center"
+                            justifyContent="center"
+                            paddingTop={2}
+                        >
+                            <Grid item>
+                                <Typography>
+                                    Forgot your password?
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Typography>
+                                    Reset password
+                                </Typography>
+                            </Grid>
+                        </Grid>
                     </CardContent>
                 </Card>
             </Grid>

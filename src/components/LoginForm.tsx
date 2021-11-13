@@ -92,7 +92,7 @@ function LoginForm() {
                             }}
                         />}
                     <Grid item sx={{ mt: 5 }}>
-                        <Button type="submit" variant="contained">Submit</Button>
+                        <Button type="submit" variant="contained" size="small">Submit</Button>
                     </Grid>
                 </Grid>
             </Grid>
