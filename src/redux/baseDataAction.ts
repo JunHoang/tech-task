@@ -25,29 +25,29 @@ export const failData = (errorMessage: string): BaseDataActionTypes => {
     errorMessage: errorMessage,
   };
 };
-
 export const fetchData = (): AppThunk => async (dispatch) => {
-  let temp;
-  return axios
-    .get(BASE_URL)
-    .then((res) => {
-      console.log(res.data);
-      const responseData = res.data;
-      if (responseData.length > 1) {
-        throw new Error("Data is not expected");
+  try {
+    const res = await axios.get(BASE_URL);
+
+    //Create Data
+    const responseData = res.data;
+    if (responseData.length > 1) {
+      throw new Error("Data is not expected");
+    }
+    let temp = responseData[0];
+    const data: Data = {};
+    for (let index = 0; index < temp.length; index++) {
+      const element = temp[index];
+      const key = element.setting_name;
+      if (element?.data_json === null) {
+        data[key] = element.data;
+      } else {
+        data[key] = element.data_json;
       }
-      temp = responseData[0];
-      const data: Data = {};
-      for (let index = 0; index < temp.length; index++) {
-        const element = temp[index];
-        const key = element.setting_name;
-        if (element.data_json === null) {
-          data[key] = element.data;
-        } else {
-          data[key] = element.data_json;
-        }
-      }
-      dispatch(initData(data));
-    })
-    .catch((err) => dispatch(failData(err.errorMessage)));
+    }
+    dispatch(initData(data));
+  } catch (err) {
+    dispatch(failData((err as any).errorMessage))
+  }
 };
+

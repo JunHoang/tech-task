@@ -26,7 +26,6 @@ function LoginCard({ title }: Props) {
                         <Typography variant="h5">
                             {title}
                         </Typography>
-                        {/* <Button> Log in</Button> */}
                         <LoginForm />
                         <Grid
                             container
