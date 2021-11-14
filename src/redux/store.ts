@@ -1,11 +1,9 @@
-import { compose, applyMiddleware, combineReducers, createStore, Action } from "redux";
+import { compose, applyMiddleware, createStore, Action } from "redux";
 import thunk, { ThunkAction } from "redux-thunk";
 
-import dataReducer from "./baseDataReducer";
+import { Store } from './reducers'
+import rootReducer from './reducers'
 
-const rootReducer = combineReducers({ dataReducer });
-
-export type Store = ReturnType<typeof rootReducer>
 
 export type AppThunk<ReturnType = void> = ThunkAction<
     ReturnType,

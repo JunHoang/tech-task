@@ -1,5 +1,5 @@
-import { INIT_DATA, LOAD_DATA, FAIL_DATA, BaseDataActionTypes } from "./baseDataActionTypes";
-import { BaseDataState } from "./baseDataTypes";
+import { INIT_DATA, LOAD_DATA, FAIL_DATA, BaseDataActionTypes } from "../types/baseDataActionTypes";
+import { BaseDataState } from "../types/baseDataTypes";
 
 const initialState = {
     data: null,

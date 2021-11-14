@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { INIT_DATA, LOAD_DATA, FAIL_DATA, BaseDataActionTypes } from "./baseDataActionTypes";
-import { Data } from "./baseDataTypes";
-import { BASE_URL } from "../shared/baseUrl";
-import { AppThunk } from "./store";
+import { INIT_DATA, LOAD_DATA, FAIL_DATA, BaseDataActionTypes } from "../types/baseDataActionTypes";
+import { Data } from "../types/baseDataTypes";
+import { BASE_URL } from "../../shared/baseUrl";
+import { AppThunk } from "../store";
 
 export const initData = (data: Data): BaseDataActionTypes => {
   return {

@@ -1,7 +1,6 @@
 import React from "react";
 import { SRC_URL } from "../shared/baseUrl";
 import Grid from '@mui/material/Grid';
-import { makeStyles, useTheme } from '@mui/styles';
 
 type Props = {
     logo: string | string[]

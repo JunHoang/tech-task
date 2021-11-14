@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchData } from '../redux/baseDataAction';
-import { Store } from '../redux/store'
+import { fetchData } from '../redux/actions/baseDataAction';
+import { Store } from '../redux/reducers'
 
 function useBaseData() {
     const dispatch = useDispatch();
