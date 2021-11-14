@@ -1,8 +1,9 @@
-import { INIT_LANG, LOAD_LANG, FAIL_LANG, LangActionTypes } from "../types/langActionTypes";
+import { INIT_LANG, LOAD_LANG, FAIL_LANG, LangActionTypes, TRANSLATING } from "../types/langActionTypes";
 import { LangState } from "../types/langTypes";
 
 const initialState: LangState = {
     lang: [],
+    translating: null,
     isLoading: false,
     errorMessage: "",
 };
@@ -15,6 +16,13 @@ export default function langReducer(state = initialState, action: LangActionType
                 lang: action.payload,
                 isLoading: false,
             };
+
+        case TRANSLATING:
+            return {
+                ...state,
+                translating: action.payload,
+                isLoading: false,
+            }
 
         case LOAD_LANG:
             return {

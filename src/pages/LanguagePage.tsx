@@ -1,9 +1,10 @@
 import React from 'react'
 import { isEmpty } from 'lodash';
+import { Link } from 'react-router-dom';
 import useLang from '../custom-hooks/useLang'
 
 function LanguagePage() {
-    const [lang, isLoading, errorMessage] = useLang();
+    const [lang, isLoading, errorMessage] = useLang(null);
     console.log("lang in LangPage", lang);
 
 
@@ -12,7 +13,9 @@ function LanguagePage() {
     } else {
         const showLang = lang.map(lang => {
             return (
-                <div key={lang.languageId}>{lang.languageNameOrig}</div>
+                <Link to={`/languages/${lang.locale}`}>
+                    <div key={lang.languageId}>{lang.languageNameOrig}</div>
+                </Link>
             )
         })
 

@@ -20,6 +20,7 @@ const storeInitialState: Store = {
     },
     langReducer: {
         lang: [],
+        translating: null,
         isLoading: false,
         errorMessage: ""
     }

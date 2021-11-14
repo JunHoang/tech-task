@@ -6,8 +6,13 @@ export type Lang = {
     locale: string;
 }
 
+export type Translating = {
+    [key: string]: any
+}
+
 export type LangState = {
     lang: Lang[],
+    translating: Translating | null,
     isLoading: boolean,
     errorMessage: string
 }
