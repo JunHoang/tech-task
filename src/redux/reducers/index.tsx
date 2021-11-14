@@ -1,10 +1,9 @@
-import React from 'react'
 import { combineReducers } from 'redux';
 
-
 import dataReducer from "../reducers/baseDataReducer";
+import langReducer from './langReducer';
 
-const rootReducer = combineReducers({ dataReducer });
+const rootReducer = combineReducers({ dataReducer, langReducer });
 
 export type Store = ReturnType<typeof rootReducer>
 

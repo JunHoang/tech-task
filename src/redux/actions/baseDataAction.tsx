@@ -26,9 +26,8 @@ export const failData = (errorMessage: string): BaseDataActionTypes => {
   };
 };
 export const fetchData = (): AppThunk => async (dispatch) => {
+  const res = await axios.get(BASE_URL + `/base/get-loginpage-settings`);
   try {
-    const res = await axios.get(BASE_URL + `/base/get-loginpage-settings`);
-
     //Create Data
     const responseData = res.data;
     if (responseData.length > 1) {

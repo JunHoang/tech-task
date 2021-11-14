@@ -18,6 +18,11 @@ const storeInitialState: Store = {
         isLoading: false,
         errorMessage: "",
     },
+    langReducer: {
+        lang: [],
+        isLoading: false,
+        errorMessage: ""
+    }
 };
 
 const makeStore = () => {
