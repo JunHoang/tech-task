@@ -11,7 +11,6 @@ function useBaseData() {
         (state: Store) => state.dataReducer
     );
 
-    console.log("data in useData", data);
 
     useEffect(() => {
         dispatch(fetchData());

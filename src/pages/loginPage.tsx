@@ -20,7 +20,7 @@ function LoginPage() {
 
         const bgImage = data["bg-image"]
         const randomBackground = bgImage[Math.floor(Math.random() * bgImage.length)];
-        console.log("randomBg", randomBackground);
+
 
         return (
             <div className="Login" style={{ backgroundImage: `url(${SRC_URL}${randomBackground})` }}>

@@ -4,7 +4,6 @@ import { INIT_LANG, LOAD_LANG, FAIL_LANG, LangActionTypes, TRANSLATING, COUNT_TE
 import { CountTerm, Lang, Translating } from "../types/langTypes";
 import { BASE_URL } from "../../shared/baseUrl";
 import { AppThunk } from "../store";
-import { loadData } from "./baseDataAction";
 
 export const initLang = (lang: Lang[]): LangActionTypes => {
     return {
@@ -74,7 +73,6 @@ export const fetchTranslating = (locale: any): AppThunk => async (dispatch) => {
         for (const key in responseData) {
             if (key === locale) {
                 data = responseData[key];
-                console.log('element', data);
             }
         }
         dispatch(translating(data))

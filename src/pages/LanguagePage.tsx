@@ -23,7 +23,6 @@ function LanguagePage() {
     const classes = useStyles();
 
     const [lang, , numberTerm, isLoading, errorMessage] = useLang(null);
-    console.log("lang in LangPage", lang);
 
 
     if (isLoading) {
@@ -37,8 +36,8 @@ function LanguagePage() {
     } else {
         const showLang = lang.map(lang => {
             return (
-                <Link to={`/languages/${lang.locale}`}>
-                    <div key={lang.languageId}>{lang.languageNameOrig}</div>
+                <Link to={`/languages/${lang.locale}`} key={lang.locale}>
+                    <div key={lang.locale}>{lang.languageNameOrig}</div>
                 </Link>
             )
         })

@@ -1,6 +1,6 @@
 import { Grid, List, ListItem, ListItemText, Paper, Typography, Breadcrumbs, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import ErrorText from '../components/ErrorText';
@@ -31,12 +31,10 @@ function KeyGroupPage() {
     const classes = useStyles();
 
     const locale = useParams();
-    console.log('locale', locale);
 
     const [, translating, , isLoading, errorMessage] = useLang(locale.locale);
     const [word, setWord] = useState("")
 
-    console.log('translating', translating);
 
     if (isLoading) {
         return (<Loading />)
@@ -49,11 +47,10 @@ function KeyGroupPage() {
         const KeyGroup = Object.keys(translating)
         const KeyTerm = Object.keys(word)
 
-        console.log('KeyTerm', KeyTerm);
 
         const showKeyGroup = KeyGroup.map(key => {
             return (
-                <List component="ul">
+                <List component="ul" key={key}>
                     <ListItem key={key} button onClick={() => setWord(translating[key])}>
                         <ListItemText style={{ textTransform: 'capitalize' }} primary={key} />
                     </ListItem>
@@ -62,7 +59,7 @@ function KeyGroupPage() {
         })
 
         const showWords = KeyTerm.map((term: any) => (
-            <Typography style={{ textTransform: 'capitalize' }} align='left'>
+            <Typography style={{ textTransform: 'capitalize' }} align='left' key={term}>
                 {term}: {word[term]}
             </Typography>
         ))
