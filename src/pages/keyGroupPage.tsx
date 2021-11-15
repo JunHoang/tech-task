@@ -1,16 +1,26 @@
-import { Grid, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
+import { Grid, List, ListItem, ListItemText, Paper, Typography, Breadcrumbs, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { Fragment, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 import useLang from '../custom-hooks/useLang';
 
 
 const useStyles = makeStyles({
+    BreadCrumbs: {
+        padding: 30,
+        margin: 20,
+    },
     Tab: {
         padding: 20,
         margin: 20,
-        height: "90vh",
+        height: "50vh",
         overflowY: 'auto'
+    },
+    Link: {
+        textDecoration: "none",
+        fontWeight: 600
     }
 })
 
@@ -50,20 +60,28 @@ function KeyGroupPage() {
         ))
 
         return (
-            <Grid container spacing={0}>
-                <Grid item sm>
-                    <Paper className={classes.Tab}>
-                        <Fragment>
-                            {showKeyGroup}
-                        </Fragment>
-                    </Paper>
+            <Box>
+                <Breadcrumbs aria-label="breadcrumb" className={classes.BreadCrumbs}>
+                    <Link to="/languages" className={classes.Link}>
+                        Languages
+                    </Link>
+                    <Typography color="text.primary">{locale.locale}</Typography>
+                </Breadcrumbs>
+                <Grid container spacing={0}>
+                    <Grid item sm>
+                        <Paper className={classes.Tab}>
+                            <Fragment>
+                                {showKeyGroup}
+                            </Fragment>
+                        </Paper>
+                    </Grid>
+                    <Grid item sm>
+                        <Paper className={classes.Tab}>
+                            {showWords}
+                        </Paper>
+                    </Grid>
                 </Grid>
-                <Grid item sm>
-                    <Paper className={classes.Tab}>
-                        {showWords}
-                    </Paper>
-                </Grid>
-            </Grid>
+            </Box>
         )
     } else {
         return <div></div>

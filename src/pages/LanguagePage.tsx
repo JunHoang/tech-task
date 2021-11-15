@@ -35,7 +35,6 @@ function LanguagePage() {
         })
 
         return (
-
             <Grid container spacing={0}>
                 <Grid item sm>
                     <Paper className={classes.Tab}>
