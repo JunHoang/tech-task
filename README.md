@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Link demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can access the demo in this [link](https://tech-task-dunghoang.netlify.app/).
 
 ## Available Scripts
 
