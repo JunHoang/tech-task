@@ -4,10 +4,18 @@ import useBaseData from '../custom-hooks/useBaseData';
 import Navbar from '../components/Navbar';
 import { SRC_URL } from "../shared/baseUrl";
 import LoginCard from '../components/LoginCard';
+import Loading from '../components/Loading';
+import ErrorText from '../components/ErrorText';
 
 function LoginPage() {
     const [data, isLoading, errorMessage] = useBaseData();
 
+    if (isLoading) {
+        return (<Loading />)
+    }
+    if (errorMessage) {
+        return (<ErrorText errorMessage={errorMessage} />)
+    }
     if (data !== null) {
 
         const bgImage = data["bg-image"]

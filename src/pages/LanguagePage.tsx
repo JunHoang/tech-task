@@ -5,14 +5,17 @@ import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
 import useLang from '../custom-hooks/useLang'
 import Chart from '../components/Chart';
+import Loading from '../components/Loading';
+import ErrorText from '../components/ErrorText';
 
 const useStyles = makeStyles({
     Tab: {
         padding: 20,
         margin: 20,
-        height: "50vh",
+        height: "55vh",
         weight: "50vw",
-        overflowY: 'auto'
+        overflowY: 'auto',
+        align: "center"
     }
 })
 
@@ -23,6 +26,12 @@ function LanguagePage() {
     console.log("lang in LangPage", lang);
 
 
+    if (isLoading) {
+        return (<Loading />)
+    }
+    if (errorMessage) {
+        return (<ErrorText errorMessage={errorMessage} />)
+    }
     if (isEmpty(lang)) {
         return <div></div>
     } else {
@@ -38,12 +47,15 @@ function LanguagePage() {
             <Grid container spacing={0}>
                 <Grid item sm>
                     <Paper className={classes.Tab}>
-                        <Typography variant='h5'>Choose Language</Typography>
+                        <Typography variant='h5' style={{ textTransform: 'uppercase' }}>Choose Language</Typography>
                         {showLang}
                     </Paper>
                 </Grid>
                 <Grid item sm>
                     <Paper className={classes.Tab}>
+                        <Typography variant='h5' style={{ textTransform: 'uppercase' }}>
+                            Statistic of the Language Terms
+                        </Typography>
                         <Chart countTerm={numberTerm} />
                     </Paper>
                 </Grid>

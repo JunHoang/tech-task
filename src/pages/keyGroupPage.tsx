@@ -3,6 +3,8 @@ import { makeStyles } from '@mui/styles';
 import React, { Fragment, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import ErrorText from '../components/ErrorText';
+import Loading from '../components/Loading';
 
 import useLang from '../custom-hooks/useLang';
 
@@ -36,6 +38,12 @@ function KeyGroupPage() {
 
     console.log('translating', translating);
 
+    if (isLoading) {
+        return (<Loading />)
+    }
+    if (errorMessage) {
+        return (<ErrorText errorMessage={errorMessage} />)
+    }
     if (translating !== null) {
 
         const KeyGroup = Object.keys(translating)
@@ -54,29 +62,27 @@ function KeyGroupPage() {
         })
 
         const showWords = KeyTerm.map((term: any) => (
-            <Typography style={{ textTransform: 'capitalize' }}>
+            <Typography style={{ textTransform: 'capitalize' }} align='left'>
                 {term}: {word[term]}
             </Typography>
         ))
 
         return (
-            <Box>
+            <Box >
                 <Breadcrumbs aria-label="breadcrumb" className={classes.BreadCrumbs}>
                     <Link to="/languages" className={classes.Link}>
                         Languages
                     </Link>
                     <Typography color="text.primary">{locale.locale}</Typography>
                 </Breadcrumbs>
-                <Grid container spacing={0}>
+                <Grid container spacing={0} >
                     <Grid item sm>
                         <Paper className={classes.Tab}>
-                            <Fragment>
-                                {showKeyGroup}
-                            </Fragment>
+                            {showKeyGroup}
                         </Paper>
                     </Grid>
                     <Grid item sm>
-                        <Paper className={classes.Tab}>
+                        <Paper className={classes.Tab} >
                             {showWords}
                         </Paper>
                     </Grid>

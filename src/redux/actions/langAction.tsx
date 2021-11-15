@@ -4,6 +4,7 @@ import { INIT_LANG, LOAD_LANG, FAIL_LANG, LangActionTypes, TRANSLATING, COUNT_TE
 import { CountTerm, Lang, Translating } from "../types/langTypes";
 import { BASE_URL } from "../../shared/baseUrl";
 import { AppThunk } from "../store";
+import { loadData } from "./baseDataAction";
 
 export const initLang = (lang: Lang[]): LangActionTypes => {
     return {
@@ -42,6 +43,7 @@ export const failLang = (errorMessage: string): LangActionTypes => {
 };
 
 export const fetchLang = (): AppThunk => async (dispatch) => {
+    dispatch(loadLang(true))
     const res = await axios.get(BASE_URL + `/lang/list-locale`);
     if (res.data.statusCode !== 200) {
         throw new Error("Something went wrong")
@@ -59,6 +61,7 @@ export const fetchLang = (): AppThunk => async (dispatch) => {
 };
 
 export const fetchTranslating = (locale: any): AppThunk => async (dispatch) => {
+    dispatch(loadLang(true))
     const res = await axios.get(BASE_URL + `/lang/list-language-data-UI`)
 
     if (res.data.statusCode !== 200) {
