@@ -1,5 +1,4 @@
 import axios from "axios";
-import { findKey } from "lodash";
 
 import { INIT_LANG, LOAD_LANG, FAIL_LANG, LangActionTypes, TRANSLATING } from "../types/langActionTypes";
 import { Lang, Translating } from "../types/langTypes";
@@ -43,7 +42,7 @@ export const fetchLang = (): AppThunk => async (dispatch) => {
     try {
         const responseData = res.data.body
         dispatch(initLang(responseData))
-        dispatch(countData())
+        dispatch(countTerm())
 
     } catch (err) {
         dispatch(failLang((err as any).errorMessage))
@@ -74,7 +73,7 @@ export const fetchTranslating = (locale: any): AppThunk => async (dispatch) => {
     }
 }
 
-export const countData = (): AppThunk => async (dispatch) => {
+export const countTerm = (): AppThunk => async (dispatch) => {
 
     const res = await axios.get(BASE_URL + `/lang/list-language-data-UI`)
 
