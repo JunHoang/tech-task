@@ -73,12 +73,12 @@ function KeyGroupPage() {
                     <Typography color="text.primary">{locale.locale}</Typography>
                 </Breadcrumbs>
                 <Grid container spacing={0} >
-                    <Grid item sm>
+                    <Grid item xs={12} md={6}>
                         <Paper className={classes.Tab}>
                             {showKeyGroup}
                         </Paper>
                     </Grid>
-                    <Grid item sm>
+                    <Grid item xs={12} md={6}>
                         <Paper className={classes.Tab} >
                             {showWords}
                         </Paper>

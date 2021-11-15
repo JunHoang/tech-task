@@ -1,8 +1,6 @@
 import React from 'react'
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { Card, Grid, CardContent, Typography } from '@mui/material';
+
 import LoginForm from './LoginForm';
 
 type Props = {
@@ -20,7 +18,7 @@ function LoginCard({ title }: Props) {
             flexDirection="column"
             style={{ minHeight: "80vh" }}
         >
-            <Grid item xs={3}>
+            <Grid item xs={12}>
                 <Card sx={{ maxWidth: 555 }}>
                     <CardContent>
                         <Typography variant="h5">

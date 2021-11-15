@@ -28,6 +28,10 @@ nav {
   height: 96px !important;
 }
 
+.Text-Form {
+  width: 80vw !important;
+}
+
 @media (max-width: 768px) {
   .navbar-brand {
     width: 112px;

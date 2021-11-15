@@ -1,0 +1,9 @@
+.textField {
+  width: 50ch;
+}
+
+@media (max-width: 500px) {
+  .textField {
+    width: 35ch;
+  }
+}

@@ -7,6 +7,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 
+import style from './LoginForm.module.css';
+
 const schema = yup.object().shape({
     Email: yup.string().required('Email is required!').email('Email is unvalid!'),
     Password: yup.string().required('Password is required!').min(8, "Password must be at least 8 characters"),
@@ -16,9 +18,10 @@ const schema = yup.object().shape({
 function LoginForm() {
     let navigate = useNavigate();
 
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema) });
 
-    const onSubmitHandler = (data: any) => {
+    const onSubmitHandler = () => {
         navigate("/languages");
         reset();
     };
@@ -26,14 +29,14 @@ function LoginForm() {
     return (
         <form onSubmit={handleSubmit(onSubmitHandler)}>
             <Grid container spacing={0} direction="column" sx={{ mt: 8 }} >
-                <Grid item sx={{ m: 1 }}>
+                <Grid item sx={{ m: 1 }} className={style.textForm}>
                     {(errors.Email) ?
                         <TextField
                             {...register("Email")}
                             variant="standard"
                             label="Email"
                             name="Email"
-                            sx={{ width: '50ch' }}
+                            className={style.textField}
                             error
                             helperText={errors.Email.message}
                             InputProps={{
@@ -50,7 +53,7 @@ function LoginForm() {
                             variant="standard"
                             label="Email"
                             name="Email"
-                            sx={{ width: '50ch' }}
+                            className={style.textField}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position='end'>
@@ -67,7 +70,7 @@ function LoginForm() {
                             variant="standard"
                             label="Password"
                             name="Password"
-                            sx={{ width: '50ch' }}
+                            className={style.textField}
                             error
                             helperText={errors.Password.message}
                             InputProps={{
@@ -84,7 +87,7 @@ function LoginForm() {
                             variant="standard"
                             label="Password"
                             name="Password"
-                            sx={{ width: '50ch' }}
+                            className={style.textField}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position='end'>

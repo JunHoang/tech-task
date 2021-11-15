@@ -13,7 +13,6 @@ const useStyles = makeStyles({
         padding: 20,
         margin: 20,
         height: "55vh",
-        weight: "50vw",
         overflowY: 'auto',
         align: "center"
     }
@@ -44,13 +43,13 @@ function LanguagePage() {
 
         return (
             <Grid container spacing={0}>
-                <Grid item sm>
+                <Grid item xs={12} sm={6}>
                     <Paper className={classes.Tab}>
                         <Typography variant='h5' style={{ textTransform: 'uppercase' }}>Choose Language</Typography>
                         {showLang}
                     </Paper>
                 </Grid>
-                <Grid item sm>
+                <Grid item xs={12} sm={6}>
                     <Paper className={classes.Tab}>
                         <Typography variant='h5' style={{ textTransform: 'uppercase' }}>
                             Statistic of the Language Terms
