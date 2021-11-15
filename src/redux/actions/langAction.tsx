@@ -102,6 +102,7 @@ export const count = (): AppThunk => async (dispatch) => {
                 }
             }
             data[locale] = count;
+            count = 0
         }
         dispatch(countTerm(data))
     } catch (err) {
