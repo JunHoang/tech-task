@@ -1,10 +1,12 @@
 import React from 'react'
+import { Grid, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
 import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
 import useLang from '../custom-hooks/useLang'
+import Chart from '../components/Chart';
 
 function LanguagePage() {
-    const [lang, , , isLoading, errorMessage] = useLang(null);
+    const [lang, , numberTerm, isLoading, errorMessage] = useLang(null);
     console.log("lang in LangPage", lang);
 
 
@@ -21,10 +23,24 @@ function LanguagePage() {
 
         return (
 
-            <div>
-                <h1>Choose Language</h1>
-                {showLang}
-            </div>
+            <Grid container >
+                <Grid container spacing={2}>
+                    <Grid item sm>
+                        <Paper>
+                            <Typography variant='h5'>Choose Language</Typography>
+                            {showLang}
+                        </Paper>
+                    </Grid>
+                    <Grid item sm>
+                        <Paper>
+                            <Chart countTerm={numberTerm} />
+                        </Paper>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+
         )
     }
 
