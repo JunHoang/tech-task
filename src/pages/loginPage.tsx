@@ -7,7 +7,6 @@ import LoginCard from '../components/LoginCard';
 
 function LoginPage() {
     const [data, isLoading, errorMessage] = useBaseData();
-    console.log("data in app", data);
 
     if (data !== null) {
 

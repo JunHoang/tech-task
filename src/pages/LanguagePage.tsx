@@ -1,11 +1,24 @@
 import React from 'react'
-import { Grid, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
 import useLang from '../custom-hooks/useLang'
 import Chart from '../components/Chart';
 
+const useStyles = makeStyles({
+    Tab: {
+        padding: 20,
+        margin: 20,
+        height: "50vh",
+        weight: "50vw",
+        overflowY: 'auto'
+    }
+})
+
 function LanguagePage() {
+    const classes = useStyles();
+
     const [lang, , numberTerm, isLoading, errorMessage] = useLang(null);
     console.log("lang in LangPage", lang);
 
@@ -23,21 +36,18 @@ function LanguagePage() {
 
         return (
 
-            <Grid container >
-                <Grid container spacing={2}>
-                    <Grid item sm>
-                        <Paper>
-                            <Typography variant='h5'>Choose Language</Typography>
-                            {showLang}
-                        </Paper>
-                    </Grid>
-                    <Grid item sm>
-                        <Paper>
-                            <Chart countTerm={numberTerm} />
-                        </Paper>
-                    </Grid>
+            <Grid container spacing={0}>
+                <Grid item sm>
+                    <Paper className={classes.Tab}>
+                        <Typography variant='h5'>Choose Language</Typography>
+                        {showLang}
+                    </Paper>
                 </Grid>
-
+                <Grid item sm>
+                    <Paper className={classes.Tab}>
+                        <Chart countTerm={numberTerm} />
+                    </Paper>
+                </Grid>
             </Grid>
 
 

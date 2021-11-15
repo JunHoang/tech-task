@@ -8,8 +8,7 @@ import useLang from '../custom-hooks/useLang';
 const useStyles = makeStyles({
     Tab: {
         padding: 20,
-        marginTop: 10,
-        marginBottom: 10,
+        margin: 20,
         height: "90vh",
         overflowY: 'auto'
     }
@@ -51,7 +50,7 @@ function KeyGroupPage() {
         ))
 
         return (
-            <Grid container spacing={2}>
+            <Grid container spacing={0}>
                 <Grid item sm>
                     <Paper className={classes.Tab}>
                         <Fragment>

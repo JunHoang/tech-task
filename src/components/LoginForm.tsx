@@ -5,6 +5,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
     Email: yup.string().required('Email is required!').email('Email is unvalid!'),
@@ -13,11 +14,12 @@ const schema = yup.object().shape({
 
 
 function LoginForm() {
+    let navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema) });
 
     const onSubmitHandler = (data: any) => {
-        console.log({ data });
+        navigate("/languages");
         reset();
     };
 

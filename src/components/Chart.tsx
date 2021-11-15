@@ -12,7 +12,7 @@ function Chart({ countTerm }: Props) {
         const data = {
             labels: Object.keys(countTerm),
             datasets: [{
-                label: 'Number of Terms',
+                label: 'Language Terms',
                 data: Object.values(countTerm),
                 backgroundColor: [
                     'rgba(255, 205, 86, 0.2)',
