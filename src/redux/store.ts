@@ -21,6 +21,7 @@ const storeInitialState: Store = {
     langReducer: {
         lang: [],
         translating: null,
+        numberTerm: null,
         isLoading: false,
         errorMessage: ""
     }

@@ -7,7 +7,7 @@ import { Store } from '../redux/reducers'
 function useLang(locale: any | null) {
     const dispatch = useDispatch();
 
-    const { lang, translating, isLoading, errorMessage } = useSelector(
+    const { lang, translating, numberTerm, isLoading, errorMessage } = useSelector(
         (state: Store) => state.langReducer
     );
 
@@ -19,7 +19,7 @@ function useLang(locale: any | null) {
         }
     }, [dispatch, locale]);
 
-    return [lang, translating, isLoading, errorMessage] as const
+    return [lang, translating, numberTerm, isLoading, errorMessage] as const
 }
 
 export default useLang

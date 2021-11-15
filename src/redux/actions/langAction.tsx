@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { INIT_LANG, LOAD_LANG, FAIL_LANG, LangActionTypes, TRANSLATING } from "../types/langActionTypes";
-import { Lang, Translating } from "../types/langTypes";
+import { INIT_LANG, LOAD_LANG, FAIL_LANG, LangActionTypes, TRANSLATING, COUNT_TERM } from "../types/langActionTypes";
+import { CountTerm, Lang, Translating } from "../types/langTypes";
 import { BASE_URL } from "../../shared/baseUrl";
 import { AppThunk } from "../store";
 
@@ -18,6 +18,14 @@ export const translating = (translating: Translating): LangActionTypes => {
         payload: translating
     }
 }
+
+export const countTerm = (countTerm: CountTerm): LangActionTypes => {
+    return {
+        type: COUNT_TERM,
+        payload: countTerm
+    }
+}
+
 
 export const loadLang = (isLoading: boolean): LangActionTypes => {
     return {
@@ -42,7 +50,7 @@ export const fetchLang = (): AppThunk => async (dispatch) => {
     try {
         const responseData = res.data.body
         dispatch(initLang(responseData))
-        dispatch(countTerm())
+        dispatch(count())
 
     } catch (err) {
         dispatch(failLang((err as any).errorMessage))
@@ -64,7 +72,6 @@ export const fetchTranslating = (locale: any): AppThunk => async (dispatch) => {
             if (key === locale) {
                 data = responseData[key];
                 console.log('element', data);
-                // data = Object.keys(data)
             }
         }
         dispatch(translating(data))
@@ -73,7 +80,7 @@ export const fetchTranslating = (locale: any): AppThunk => async (dispatch) => {
     }
 }
 
-export const countTerm = (): AppThunk => async (dispatch) => {
+export const count = (): AppThunk => async (dispatch) => {
 
     const res = await axios.get(BASE_URL + `/lang/list-language-data-UI`)
 
@@ -93,16 +100,10 @@ export const countTerm = (): AppThunk => async (dispatch) => {
                         count++
                     }
                 }
-                // console.log(Object.values(responseData[locale][keyGroup]).length);
-
             }
             data[locale] = count;
-            console.log('locale', locale);
-            console.log('count', count);
-
         }
-
-        console.log('data', data);
+        dispatch(countTerm(data))
     } catch (err) {
         dispatch(failLang((err as any).errorMessage))
     }

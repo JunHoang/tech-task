@@ -22,7 +22,7 @@ function KeyGroupPage() {
     const locale = useParams();
     console.log('locale', locale);
 
-    const [, translating, isLoading, errorMessage] = useLang(locale.locale);
+    const [, translating, , isLoading, errorMessage] = useLang(locale.locale);
     const [word, setWord] = useState("")
 
     console.log('translating', translating);

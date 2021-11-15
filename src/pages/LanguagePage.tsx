@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useLang from '../custom-hooks/useLang'
 
 function LanguagePage() {
-    const [lang, isLoading, errorMessage] = useLang(null);
+    const [lang, , , isLoading, errorMessage] = useLang(null);
     console.log("lang in LangPage", lang);
 
 
