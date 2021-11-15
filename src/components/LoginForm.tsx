@@ -70,6 +70,7 @@ function LoginForm() {
                             variant="standard"
                             label="Password"
                             name="Password"
+                            type="password"
                             className={style.textField}
                             error
                             helperText={errors.Password.message}
@@ -87,6 +88,7 @@ function LoginForm() {
                             variant="standard"
                             label="Password"
                             name="Password"
+                            type="password"
                             className={style.textField}
                             InputProps={{
                                 endAdornment: (
