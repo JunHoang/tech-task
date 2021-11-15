@@ -11,8 +11,6 @@ function useLang(locale: any | null) {
         (state: Store) => state.langReducer
     );
 
-    console.log("lang in Lang", lang);
-
     useEffect(() => {
         if (locale) {
             dispatch(fetchTranslating(locale))

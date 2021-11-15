@@ -43,6 +43,7 @@ export const fetchLang = (): AppThunk => async (dispatch) => {
     try {
         const responseData = res.data.body
         dispatch(initLang(responseData))
+        dispatch(countData())
 
     } catch (err) {
         dispatch(failLang((err as any).errorMessage))
@@ -68,9 +69,44 @@ export const fetchTranslating = (locale: any): AppThunk => async (dispatch) => {
             }
         }
         dispatch(translating(data))
-        console.log('KeyGroup', data);
     } catch (err) {
         dispatch(failLang((err as any).errorMessage))
     }
 }
 
+export const countData = (): AppThunk => async (dispatch) => {
+
+    const res = await axios.get(BASE_URL + `/lang/list-language-data-UI`)
+
+    if (res.data.statusCode !== 200) {
+        throw new Error("Something went wrong")
+    }
+
+    try {
+        const responseData = res.data.body
+        let data: any = {}, count = 0
+        for (const locale in responseData) {
+            const localeData = responseData[locale]
+            for (const keyGroup in localeData) {
+                const keyGroupData = localeData[keyGroup]
+                for (const word in keyGroupData) {
+                    if (word !== keyGroupData[word]) {
+                        count++
+                    }
+                }
+                // console.log(Object.values(responseData[locale][keyGroup]).length);
+
+            }
+            data[locale] = count;
+            console.log('locale', locale);
+            console.log('count', count);
+
+        }
+
+        console.log('data', data);
+    } catch (err) {
+        dispatch(failLang((err as any).errorMessage))
+    }
+
+
+}
